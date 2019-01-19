@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,12 +19,15 @@ public class Tournament {
 
 	@Id
 	@GeneratedValue(generator = "tournament_seq")
-	@SequenceGenerator(name="tournament_generator", sequenceName = "tournament_seq", allocationSize=50)
+	@SequenceGenerator(name="tournament_generator", sequenceName = "tournament_seq")
 	@Column
 	private long id;
 
 	@Column(nullable = false)
 	private String name;
+
+	@Column
+	private LocalDate date;
 
 	@Column(nullable = false)
 	private String surface;
@@ -32,19 +36,29 @@ public class Tournament {
 	private String city;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "player_id")
-	private List<Player> players;
+	@JoinColumn(name = "draw_id")
+	private List<Draw> draws;
 
 	public Tournament() {
 
 	}
 
-	public Tournament(String name, String surface, String city) {
+	public Tournament(String name, LocalDate date, String surface, String city) {
 
 		this.name = name;
+		this.date = date;
 		this.surface = surface;
 		this.city = city;
+	}
 
+	public List<Draw> getDraws() {
+
+		return draws;
+	}
+
+	public void setDraws(List<Draw> draws) {
+
+		this.draws = draws;
 	}
 
 	public long getId() {
@@ -67,16 +81,6 @@ public class Tournament {
 		this.name = name;
 	}
 
-	public List<Player> getPlayers() {
-
-		return players;
-	}
-
-	public void setPlayers(List<Player> players) {
-
-		this.players = players;
-	}
-
 	public String getSurface() {
 
 		return surface;
@@ -95,5 +99,15 @@ public class Tournament {
 	public void setCity(String city) {
 
 		this.city = city;
+	}
+
+	public LocalDate getDate() {
+
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+
+		this.date = date;
 	}
 }

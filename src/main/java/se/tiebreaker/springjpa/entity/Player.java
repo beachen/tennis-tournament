@@ -3,7 +3,6 @@ package se.tiebreaker.springjpa.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
@@ -14,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 public class Player {
 
 	@Id
-	@SequenceGenerator(name="player_generator", sequenceName = "player_seq", allocationSize=50)
+	@SequenceGenerator(name="player_generator", sequenceName = "player_seq")
 	@GeneratedValue(generator = "player_seq")
 	@Column
 	private long id;

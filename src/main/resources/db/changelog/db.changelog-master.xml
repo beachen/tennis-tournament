@@ -9,7 +9,9 @@
     <changeSet id="1" author="anders">
         <createSequence sequenceName="tournament_seq" incrementBy="1"/>
         <createSequence sequenceName="player_seq" incrementBy="1"/>
+        <createSequence sequenceName="draw_seq" incrementBy="1"/>
 
+        <!-- Tournaments-->
         <createTable tableName="tournament">
             <column name="id" type="long">
                 <constraints primaryKey="true" nullable="false"/>
@@ -20,6 +22,8 @@
             <column name="surface" type="varchar(50)"/>
             <column name="city" type="varchar(50)"/>
         </createTable>
+
+        <!-- Players-->
         <createTable tableName="player">
             <column name="id" type="long">
                 <constraints primaryKey="true" nullable="false"/>
@@ -27,6 +31,14 @@
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
             <column name="ranking" type="int"/>
+        </createTable>
+
+        <!-- Draws-->
+        <createTable tableName="draw">
+            <column name="id" type="long">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
         </createTable>
     </changeSet>
 
