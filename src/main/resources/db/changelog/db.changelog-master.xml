@@ -19,10 +19,15 @@
             <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="date" type="date"/>
             <column name="surface" type="varchar(50)"/>
             <column name="city" type="varchar(50)"/>
         </createTable>
 
+        <createIndex indexName="idx_tournament" tableName="tournament" unique="true">
+            <column name="name"/>
+            <column name="date"/>
+        </createIndex>
         <!-- Players-->
         <createTable tableName="player">
             <column name="id" type="long">

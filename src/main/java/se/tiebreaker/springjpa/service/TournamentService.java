@@ -26,17 +26,14 @@ public class TournamentService {
 		Iterable<Tournament> t = repo.findAll();
 		List<Tournament> all = new ArrayList<>();
 		t.forEach(all::add);
-
-		save();
-	    return all;
+		return all;
 	}
-	public void save(){
+	public void save(Tournament tournament){
 
 		Tournament wimbledon = new Tournament("Wimbledon", LocalDate.of(2019, 6,20), "Grass", "London");
 		Tournament rolanGarros = new Tournament("Roland Garros", LocalDate.of(2019, 5,20), "Clay", "Paris");
 
-
-		Draw mensSingles = new Draw("Mens Singles");
+  		Draw mensSingles = new Draw("Mens Singles");
 		mensSingles.setPlayers(new ArrayList<>());
 		mensSingles.getPlayers().add(new Player("Roger", "Federer"));
 		mensSingles.getPlayers().add(new Player("Rafael", "Nadal"));
@@ -45,6 +42,4 @@ public class TournamentService {
 		repo.save(wimbledon);
 		repo.save(rolanGarros);
 	}
-
-
 }

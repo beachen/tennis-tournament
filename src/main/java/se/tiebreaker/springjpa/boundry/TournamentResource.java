@@ -2,6 +2,7 @@ package se.tiebreaker.springjpa.boundry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.tiebreaker.springjpa.entity.Tournament;
@@ -24,6 +25,11 @@ public class TournamentResource {
 	public List<Tournament> getTournaments(){
 
 		return this.service.getTournaments();
+	}
+	@PostMapping("/add")
+	public void getTournaments(Tournament tournament){
+
+		this.service.save(tournament);
 	}
 
 

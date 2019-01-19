@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @author Anders Strand
  */
 @Entity
-public class Tournament {
+public class Tournament implements Serializable {
 
 	@Id
 	@GeneratedValue(generator = "tournament_seq")

@@ -10,4 +10,5 @@ import se.tiebreaker.springjpa.entity.Tournament;
 @Repository
 public interface TournamentRepository extends CrudRepository<Tournament, Long> {
 
+
 }
