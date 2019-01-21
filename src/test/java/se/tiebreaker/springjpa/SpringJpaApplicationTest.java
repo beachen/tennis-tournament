@@ -12,7 +12,7 @@ import se.tiebreaker.springjpa.entity.Tournament;
 
 import java.time.LocalDate;
 
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.assertNotNull;
 
 /**
  * @author Anders Strand
@@ -42,7 +42,7 @@ public class SpringJpaApplicationTest {
 
 		String tournamnets = this.restTemplate.getForObject("http://localhost:" + port + "/tournaments/all", String.class);
 		System.out.println("All tournaments:" + tournamnets);
-		assertTrue(tournamnets != null);
+		assertNotNull(tournamnets);
 	}
 
 }

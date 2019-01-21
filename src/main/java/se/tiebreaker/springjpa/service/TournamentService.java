@@ -2,14 +2,13 @@ package se.tiebreaker.springjpa.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.tiebreaker.springjpa.entity.Draw;
-import se.tiebreaker.springjpa.entity.Player;
+import org.springframework.transaction.annotation.Transactional;
 import se.tiebreaker.springjpa.entity.Tournament;
 import se.tiebreaker.springjpa.repository.TournamentRepository;
 
-import java.time.LocalDate;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,25 +20,27 @@ public class TournamentService {
 	@Autowired
 	TournamentRepository repo;
 
-	public List<Tournament> getTournaments(){
+	@PersistenceContext
+	private EntityManager em;
+
+	public List<Tournament> getTournaments() {
 
 		Iterable<Tournament> t = repo.findAll();
 		List<Tournament> all = new ArrayList<>();
 		t.forEach(all::add);
 		return all;
 	}
-	public void save(Tournament tournament){
 
-		Tournament wimbledon = new Tournament("Wimbledon", LocalDate.of(2019, 6,20), "Grass", "London");
-		Tournament rolanGarros = new Tournament("Roland Garros", LocalDate.of(2019, 5,20), "Clay", "Paris");
+	@Transactional
+	public void save(Tournament tournament) {
 
-  		Draw mensSingles = new Draw("Mens Singles");
-		mensSingles.setPlayers(new ArrayList<>());
-		mensSingles.getPlayers().add(new Player("Roger", "Federer"));
-		mensSingles.getPlayers().add(new Player("Rafael", "Nadal"));
-		wimbledon.setDraws(Arrays.asList(mensSingles));
-
-		repo.save(wimbledon);
-		repo.save(rolanGarros);
+		Tournament existing = repo.findByName(tournament.getName());
+		if(existing != null){
+			existing.setDraws(tournament.getDraws());
+			em.merge(existing.getDraws());
+		}
+		else{
+			em.persist(tournament);
+		}
 	}
 }
