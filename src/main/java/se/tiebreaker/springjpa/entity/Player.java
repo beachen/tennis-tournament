@@ -5,12 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 
 /**
  * @author Anders Strand
  */
 @Entity
-public class Player {
+public class Player implements Serializable {
 
 	@Id
 	@SequenceGenerator(name="player_generator", sequenceName = "player_seq")
