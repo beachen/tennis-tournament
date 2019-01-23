@@ -1,11 +1,11 @@
-package se.tiebreaker.springjpa;
+package se.tiebreaker.tournament;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import se.tiebreaker.springjpa.entity.Draw;
-import se.tiebreaker.springjpa.entity.Player;
-import se.tiebreaker.springjpa.entity.Tournament;
+import se.tiebreaker.tournament.entity.Draw;
+import se.tiebreaker.tournament.entity.Player;
+import se.tiebreaker.tournament.entity.Tournament;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

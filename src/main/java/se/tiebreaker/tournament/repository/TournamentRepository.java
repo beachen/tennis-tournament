@@ -1,8 +1,8 @@
-package se.tiebreaker.springjpa.repository;
+package se.tiebreaker.tournament.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import se.tiebreaker.springjpa.entity.Tournament;
+import se.tiebreaker.tournament.entity.Tournament;
 
 /**
  * @author Anders Strand

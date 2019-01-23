@@ -1,11 +1,11 @@
-package se.tiebreaker.springjpa.service;
+package se.tiebreaker.tournament.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import se.tiebreaker.springjpa.entity.Player;
-import se.tiebreaker.springjpa.entity.Tournament;
-import se.tiebreaker.springjpa.repository.TournamentRepository;
+import se.tiebreaker.tournament.entity.Player;
+import se.tiebreaker.tournament.entity.Tournament;
+import se.tiebreaker.tournament.repository.TournamentRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

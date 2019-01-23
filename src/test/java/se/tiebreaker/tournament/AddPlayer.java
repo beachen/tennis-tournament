@@ -1,9 +1,9 @@
-package se.tiebreaker.springjpa;
+package se.tiebreaker.tournament;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
-import se.tiebreaker.springjpa.entity.Player;
+import se.tiebreaker.tournament.entity.Player;
 
 /**
  * @author Anders Strand

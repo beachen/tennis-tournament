@@ -1,4 +1,4 @@
-package se.tiebreaker.springjpa.entity;
+package se.tiebreaker.tournament.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
