@@ -11,5 +11,5 @@ import se.tiebreaker.tournament.entity.Tournament;
 @Repository
 public interface RegistrationRepository extends CrudRepository<Registration, Long> {
 
-	public Registration findByIdAndAndTournamentId(long id, long tid);
+	//public Registration findBy(long id, long tid);
 }

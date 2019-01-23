@@ -3,6 +3,7 @@ package se.tiebreaker.tournament.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import se.tiebreaker.tournament.entity.Draw;
 import se.tiebreaker.tournament.entity.Player;
 import se.tiebreaker.tournament.entity.Tournament;
 import se.tiebreaker.tournament.repository.TournamentRepository;
@@ -41,11 +42,22 @@ public class TournamentService {
 		}
 		else {
 			em.persist(tournament);
+			Draw men = new Draw();
+			men.setTournament(tournament);
+			men.setName("Men's singles");
+
+			Draw draw = new Draw();
+			draw.setTournament(tournament);
+			draw.setName("Women's singles");
+
+			em.persist(men);
+			em.persist(draw);
+
 			// Update ManyToOne relationship
-			tournament.getDraws().forEach(draw -> {
-				draw.setTournament(tournament);
-				em.persist(draw);
-			});
+			//tournament.getDraws().forEach(draw -> {
+			//	draw.setTournament(tournament);
+			//	em.persist(draw);
+
 		}
 	}
 	@Transactional

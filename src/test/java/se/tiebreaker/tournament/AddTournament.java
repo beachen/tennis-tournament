@@ -32,7 +32,7 @@ public class AddTournament {
 		draws.add(mens);
 		draws.add(womens);
 
-		tournament.setDraws(draws);
+
 
 		ResponseEntity<String> upload = template.postForEntity(
 			"http://localhost:8080/tournaments/add",
@@ -60,23 +60,25 @@ public class AddTournament {
 
 		Draw draw = new Draw();
 		draw.setName("Men's singles");
+		/*
 		draw.setPlayers(Arrays.asList(
 			new Player("Roger", "Federer"),
 			new Player("Rafael", "Nadal"),
 			new Player("Novak", "Djokovic"),
 			new Player("Andy", "Murray"),
 			new Player("Grigor", "Dimitrov"),
-			new Player("Milos", "Raonic")));
+			new Player("Milos", "Raonic"))); */
 		return draw;
 	}
 
 	private static Draw createWomenSingles() {
 
 		Draw draw = new Draw();
+		/*
 		draw.setName("Women's singles");
 		draw.setPlayers(Arrays.asList(
 			new Player("Serena", "Williams"),
-			new Player("Simona", "Halep")));
+			new Player("Simona", "Halep"))); */
 
 		return draw;
 	}

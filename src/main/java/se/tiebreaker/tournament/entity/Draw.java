@@ -4,16 +4,13 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import java.util.List;
 
 /**
  * @author Anders Strand
@@ -36,10 +33,6 @@ public class Draw {
 	@ManyToOne
 	@JoinColumn(name="tournament_id")
 	private Tournament tournament;
-
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name = "player_id")
-	private List<Player> players;
 
 	public Draw(String name) {
 

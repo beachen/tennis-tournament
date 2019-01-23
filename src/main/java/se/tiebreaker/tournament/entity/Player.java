@@ -1,5 +1,7 @@
 package se.tiebreaker.tournament.entity;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * @author Anders Strand
  */
 @Entity
+@Data
 public class Player implements Serializable {
 
 	@Id
@@ -31,37 +34,5 @@ public class Player implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Player() {
 
-	}
-
-	public long getId() {
-
-		return id;
-	}
-
-	public void setId(long id) {
-
-		this.id = id;
-	}
-
-	public String getFirstName() {
-
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-
-		this.lastName = lastName;
-	}
 }
