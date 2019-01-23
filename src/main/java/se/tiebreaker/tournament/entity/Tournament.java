@@ -3,6 +3,7 @@ package se.tiebreaker.tournament.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,9 +38,9 @@ public class Tournament implements Serializable {
 	@Column(nullable = false)
 	private String city;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "draw_id")
+	@OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Draw> draws;
+
 
 	public Tournament() {
 

@@ -3,6 +3,7 @@ package se.tiebreaker.tournament.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import se.tiebreaker.tournament.entity.Draw;
 import se.tiebreaker.tournament.entity.Player;
 import se.tiebreaker.tournament.entity.Tournament;
 import se.tiebreaker.tournament.repository.TournamentRepository;
@@ -36,20 +37,27 @@ public class TournamentService {
 	@Transactional
 	public void save(Tournament tournament) {
 
+
 		Tournament existing = repo.findByName(tournament.getName());
 		if (existing != null) {
-			em.persist(existing);
+			em.merge(existing);
 		}
 		else {
-			em.merge(tournament);
+			em.persist(tournament);
+			// Update ManyToOne relationship
+			tournament.getDraws().forEach(draw -> {
+				draw.setTournament(tournament);
+				em.persist(draw);
+			});
 		}
 	}
 	@Transactional
 	public void addPlayer(int id, Player player) {
 
-		Optional<Tournament> tournament = repo.findById((long) id);
-		Tournament t = tournament.get();
-		t.getDraws().get(0).getPlayers().add(player);
-		em.merge(t);
+		//Optional<Tournament> tournament = repo.findById((long) id);
+		//Tournament t = tournament.get();
+//		List<Draw> allDraws = t.getDraws();
+//		t.getDraws().get(0).setPlayers(List.of(player));
+//		em.merge(t);
 	}
 }

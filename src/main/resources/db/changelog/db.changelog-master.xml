@@ -44,6 +44,9 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(50)"/>
+            <column name="tournament_id" type="long">
+              <constraints foreignKeyName="tournament_id"/>
+            </column>
         </createTable>
     </changeSet>
 
