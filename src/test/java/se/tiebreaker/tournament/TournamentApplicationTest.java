@@ -19,7 +19,7 @@ import static junit.framework.TestCase.assertNotNull;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class SpringJpaApplicationTest {
+public class TournamentApplicationTest {
 
 	@LocalServerPort
 	private int port;

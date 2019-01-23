@@ -54,7 +54,6 @@ public class AddTournament {
 		response = template.getForObject("http://localhost:8080/tournaments/all", String.class);
 		System.out.println(response);
 
-
 	}
 
 	private static Draw createMensSingles() {
