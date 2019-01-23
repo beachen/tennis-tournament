@@ -10,8 +10,6 @@ import se.tiebreaker.tournament.entity.Player;
 import se.tiebreaker.tournament.entity.Tournament;
 import se.tiebreaker.tournament.service.TournamentService;
 
-import java.util.List;
-
 /**
  * @author Anders Strand
  */
@@ -24,9 +22,9 @@ public class TournamentResource {
 	TournamentService service;
 
 	@GetMapping("/all")
-	public List<Tournament> getTournaments(){
+	public String getTournaments(){
 
-		return this.service.getTournaments();
+		return "{tournaments:" + this.service.getTournaments().size() + "}";
 	}
 	@PostMapping(path="/add", consumes = "application/json")
 	public void getTournaments(@RequestBody Tournament tournament){

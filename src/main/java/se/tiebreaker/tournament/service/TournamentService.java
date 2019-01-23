@@ -3,7 +3,6 @@ package se.tiebreaker.tournament.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import se.tiebreaker.tournament.entity.Draw;
 import se.tiebreaker.tournament.entity.Player;
 import se.tiebreaker.tournament.entity.Tournament;
 import se.tiebreaker.tournament.repository.TournamentRepository;
@@ -12,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Anders Strand
@@ -36,7 +34,6 @@ public class TournamentService {
 
 	@Transactional
 	public void save(Tournament tournament) {
-
 
 		Tournament existing = repo.findByName(tournament.getName());
 		if (existing != null) {
